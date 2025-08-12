@@ -1,0 +1,148 @@
+:root {
+  --bg: #0f1722;
+  --card: #0b1220;
+  --accent: #10b981;
+  --glass: rgba(255, 255, 255, 0.04);
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, 'Noto Sans KR',
+    sans-serif;
+  background: var(--bg);
+  color: #fff;
+}
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+#ranking {
+  width: 100%;
+  background: var(--card);
+  border-radius: 10px;
+  padding: 8px 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+#ranking h3 {
+  margin: 0 0 6px 0;
+  font-size: 14px;
+}
+#ranking ol {
+  margin: 0;
+  padding-left: 18px;
+  list-style-position: inside;
+  font-size: 13px;
+}
+
+#game-area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+#score-display,
+#highscore-display {
+  font-weight: 700;
+}
+#start-btn {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  color: #042;
+  cursor: pointer;
+  user-select: none;
+}
+#playfield {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #071018, #022233);
+  height: 70vh;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* 타겟과 폭탄 */
+.target,
+.bomb {
+  position: absolute;
+  touch-action: manipulation;
+  user-select: none;
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  will-change: transform;
+  transition: transform 80ms linear;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+@media (max-width: 420px) {
+  .target,
+  .bomb {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+/* 모달 */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+.modal-inner {
+  background: var(--glass);
+  padding: 16px;
+  border-radius: 10px;
+  min-width: 260px;
+  text-align: center;
+}
+.hidden {
+  display: none !important;
+}
+
+/* blood 잔상 효과 */
+.blood-splash {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  pointer-events: none;
+  z-index: 20;
+  user-select: none;
+  background: url('assets/blood.png') no-repeat center center;
+  background-size: contain;
+  opacity: 0.8;
+  animation: bloodFade 2s forwards;
+}
+
+@keyframes bloodFade {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}

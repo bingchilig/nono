@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+  <title>사진 팝 사격 게임</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="ranking">
+      <h3></h3>
+      <ol id="rank-list">
+        
+      </ol>
+    </div>
+
+    <div id="game-area">
+      <div id="hud">
+        <div id="score-display">점수: 0</div>
+        <div id="highscore-display">최고점수: 0</div>
+        <button id="start-btn">게임 시작</button>
+      </div>
+      <div id="playfield"></div>
+    </div>
+
+    <div id="gameover-modal" class="modal hidden">
+      <div class="modal-inner">
+        <h2>Game Over</h2>
+        <p id="final-score">점수: 0</p>
+        <button id="retry-btn">다시하기</button>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
